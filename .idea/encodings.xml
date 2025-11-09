@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Event-Service/Event-Service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Service-Directory/Service-Directory/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Service-Directory/Service-Directory/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Service-Discovery/Service-Discovery/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Service-Discovery/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Service-Discovery/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ticket-Service/Ticket-Service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/User-Service/User-Service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Venue-Service/Venue-Service/src/main/java" charset="UTF-8" />
+  </component>
+</project>
