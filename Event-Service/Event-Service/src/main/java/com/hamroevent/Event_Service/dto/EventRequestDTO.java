@@ -2,7 +2,6 @@ package com.hamroevent.Event_Service.dto;
 
 
 import com.hamroevent.Event_Service.entity.Venue;
-import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;

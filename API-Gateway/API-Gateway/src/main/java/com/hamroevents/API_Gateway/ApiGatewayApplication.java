@@ -1,13 +1,13 @@
-package com.hamroevent.Event_Service;
+package com.hamroevents.API_Gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-
-public class EventServiceApplication {
+public class ApiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EventServiceApplication.class, args);
+		SpringApplication.run(ApiGatewayApplication.class, args);
 	}
+
 }
