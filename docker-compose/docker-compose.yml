@@ -1,0 +1,106 @@
+services:
+  event-discovery-server:
+    container_name: event-discovery-server
+    build:
+      context: ../Service-Discovery/Service-Discovery
+      dockerfile: Dockerfile
+    ports:
+      - "8101:8101"
+    networks:
+      - my-network
+
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: ../API-Gateway/API-Gateway
+      dockerfile: Dockerfile
+    image: api-gateway:latest
+    ports:
+      - "8007:8007"
+    environment:
+      EUREKA_HOST: event-discovery-server
+    depends_on:
+      - event-discovery-server
+    networks:
+      - my-network
+
+  user-service:
+    container_name: user-service
+    image: user-server:latest
+    build:
+      context: ../User-Service/User-Service
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      EUREKA_HOST: event-discovery-server
+      MYSQL_HOST: mysqldb
+      MYSQL_DATABASE: user_service
+      MYSQL_USER: root
+      MYSQL_PASSWORD: "Youaregreat@123"
+    depends_on:
+      - event-discovery-server
+    networks:
+      - my-network
+
+  event-service:
+    container_name: event-service
+    image: event-server:latest
+    build:
+      context: ../Event-Service/Event-Service
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8084"
+    environment:
+      EUREKA_HOST: event-discovery-server
+      MONGO_HOST: mongodb
+      MONGO_PORT: 27017
+      SPRING_DATA_MONGODB_USERNAME: root
+      SPRING_DATA_MONGODB_PASSWORD: password
+      SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: admin
+    depends_on:
+      - event-discovery-server
+    networks:
+      - my-network
+
+  ticket-service:
+    container_name: ticket-service
+    image: ticket-server:latest
+    build:
+      context: ../Ticket-Service/Ticket-Service
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    environment:
+      EUREKA_HOST: event-discovery-server
+      MYSQL_HOST: mysqldb
+      MYSQL_DATABASE: ticket_service
+      MYSQL_USER: root
+      MYSQL_PASSWORD: "Youaregreat@123"
+    depends_on:
+      - event-discovery-server
+    networks:
+      - my-network
+
+  venue-service:
+    container_name: venue-service
+    image: venue-server:latest
+    build:
+      context: ../Venue-Service/Venue-Service
+      dockerfile: Dockerfile
+    ports:
+      - "8087:8087"
+    environment:
+      EUREKA_HOST: event-discovery-server
+      MYSQL_HOST: mysqldb
+      MYSQL_DATABASE: venue_service
+      MYSQL_USER: root
+      MYSQL_PASSWORD: "Youaregreat@123"
+    depends_on:
+      - event-discovery-server
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
